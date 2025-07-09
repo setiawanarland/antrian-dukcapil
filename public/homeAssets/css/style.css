@@ -625,7 +625,7 @@ section .container {
 }
 
 .services .icon-box:hover .icon {
-  background: #fff;
+  background: #000000;
 }
 
 .services .icon-box:hover .icon i {
