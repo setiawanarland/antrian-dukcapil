@@ -4,6 +4,17 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+
+/**
+   * Preloader
+   */
+let preloader = document.getElementById('preloader');
+if (preloader) {
+  window.addEventListener('load', () => {
+    preloader.remove()
+  });
+}
+
 !(function($) {
   "use strict";
 
