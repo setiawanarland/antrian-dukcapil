@@ -18,7 +18,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'nik',
         'name',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'jenis_kelamin',
+        'alamat',
+        'desa',
+        'kec',
+        'pekerjaan',
         'email',
         'password',
     ];
@@ -46,5 +54,4 @@ class User extends Authenticatable
     {
         return $this->roles === $roles;
     }
-
 }

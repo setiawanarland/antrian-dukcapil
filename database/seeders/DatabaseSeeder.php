@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Antrian;
 use App\Models\Layanan;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,9 +29,9 @@ class DatabaseSeeder extends Seeder
             'nama_layanan' => 'Layanan E-KTP',
             'kode'         => 'KTP',
             'slug'         => 'layanan-e-ktp',
-            'batas_antrian'=> 20,
+            'batas_antrian' => 20,
             'deskripsi'    => 'Ambil antrian untuk mengurus perekaman E-KTP',
-            'persyaratan'  => 'Berkas yang dibawa Fotocopy KK, KTP-el asli yang lama, Surat keterangan hilang kepolisian', 
+            'persyaratan'  => 'Berkas yang dibawa Fotocopy KK, KTP-el asli yang lama, Surat keterangan hilang kepolisian',
             'user_id'      => 1,
         ]);
 
@@ -38,9 +39,9 @@ class DatabaseSeeder extends Seeder
             'nama_layanan' => 'Layanan Kartu Keluarga',
             'kode'         => 'KK',
             'slug'         => 'layanan-kartu-keluarga',
-            'batas_antrian'=> 20,
+            'batas_antrian' => 20,
             'deskripsi'    => 'Ambil antrian untuk mengurus Kartu Keluarga',
-            'persyaratan'  => 'Berkas yang dibawa Fotocopy KK', 
+            'persyaratan'  => 'Berkas yang dibawa Fotocopy KK',
             'user_id'      => 1,
         ]);
 
@@ -48,9 +49,9 @@ class DatabaseSeeder extends Seeder
             'nama_layanan' => 'Layanan Akta Kelahiran',
             'kode'         => 'AKKEL',
             'slug'         => 'layanan-akta-kelahiran',
-            'batas_antrian'=> 20,
+            'batas_antrian' => 20,
             'deskripsi'    => 'Ambil antrian untuk mengurus Akta Kelahiran',
-            'persyaratan'  => 'Berkas yang dibawa Fotocopy KK', 
+            'persyaratan'  => 'Berkas yang dibawa Fotocopy KK',
             'user_id'      => 1,
         ]);
 
@@ -58,9 +59,9 @@ class DatabaseSeeder extends Seeder
             'nama_layanan' => 'Layanan Surat Pindah',
             'kode'         => 'SP',
             'slug'         => 'layanan-surat-pindah',
-            'batas_antrian'=> 20,
+            'batas_antrian' => 20,
             'deskripsi'    => 'Ambil antrian untuk mengurus Surat Pindah',
-            'persyaratan'  => 'Berkas yang dibawa Fotocopy KK', 
+            'persyaratan'  => 'Berkas yang dibawa Fotocopy KK',
             'user_id'      => 1,
         ]);
 
@@ -93,12 +94,18 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
+            'nik'       => 1234567891011123,
+            'tempat_lahir'      => 'jeneponto',
+            'tanggal_lahir'      => Carbon::create('1995', '10', '26'),
+            'jenis_kelamin'      => 'laki-laki',
+            'alamat'      => 'jl. pahlawan',
+            'desa'      => 'empoang',
+            'kec'      => 'binamu',
+            'pekerjaan'      => 'admin',
             'name'      => 'Admin',
             'email'     => 'admin@gmail.com',
             'password'  => bcrypt('1234'),
             'roles'     => 'admin'
         ]);
-
-
     }
 }

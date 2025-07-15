@@ -27,7 +27,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Pilih Layanan</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -146,12 +146,12 @@
                                     <!--
     @else
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-id="{{ $antrian->id }}" data-bs-target="#exampleModal">
-                                                                                                                                                                                                                                                                                  Ambil Antrian
-                                                                                                                                                                                                                                                                                </button>
+                                                                                                                                                                                                                                                                                                          Ambil Antrian
+                                                                                                                                                                                                                                                                                                        </button>
         @endif -->
                                     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-id="{{ $antrian->id }}" data-bs-target="#exampleModal">
-                                                                                                                                                                                                                                                                                  Ambil Antrian
-                                                                                                                                                                                                                                                                                </button> -->
+                                                                                                                                                                                                                                                                                                          Ambil Antrian
+                                                                                                                                                                                                                                                                                                        </button> -->
                                     <!-- Jika Kondisi Sudah Pernah Mengambil Antrian Di Layanan Yang Sama, Maka Muncul Alert Anda Sudah Mengambil Antrian ini -->
                                     <!--
     @else
