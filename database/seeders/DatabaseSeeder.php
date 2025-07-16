@@ -8,6 +8,7 @@ use App\Models\Ambilantrian;
 use App\Models\User;
 use App\Models\Antrian;
 use App\Models\Layanan;
+use App\Models\SubLayanan;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 
@@ -26,70 +27,95 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Antrian::create([
-            'nama_layanan' => 'Layanan E-KTP',
-            'kode'         => 'KTP',
-            'slug'         => 'layanan-e-ktp',
-            'batas_antrian' => 20,
-            'deskripsi'    => 'Ambil antrian untuk mengurus perekaman E-KTP',
-            'persyaratan'  => 'Berkas yang dibawa Fotocopy KK, KTP-el asli yang lama, Surat keterangan hilang kepolisian',
-            'user_id'      => 1,
-        ]);
-
-        Antrian::create([
-            'nama_layanan' => 'Layanan Kartu Keluarga',
+            'nama_antrian' => 'Kartu Keluarga',
             'kode'         => 'KK',
-            'slug'         => 'layanan-kartu-keluarga',
+            'slug'         => 'antrian-kartu-keluarga',
             'batas_antrian' => 20,
             'deskripsi'    => 'Ambil antrian untuk mengurus Kartu Keluarga',
-            'persyaratan'  => 'Berkas yang dibawa Fotocopy KK',
             'user_id'      => 1,
         ]);
 
         Antrian::create([
-            'nama_layanan' => 'Layanan Akta Kelahiran',
-            'kode'         => 'AKKEL',
-            'slug'         => 'layanan-akta-kelahiran',
+            'nama_antrian' => 'E-KTP',
+            'kode'         => 'KTP',
+            'slug'         => 'antrian-e-ktp',
             'batas_antrian' => 20,
-            'deskripsi'    => 'Ambil antrian untuk mengurus Akta Kelahiran',
-            'persyaratan'  => 'Berkas yang dibawa Fotocopy KK',
+            'deskripsi'    => 'Ambil antrian untuk mengurus E-KTP',
             'user_id'      => 1,
         ]);
 
         Antrian::create([
-            'nama_layanan' => 'Layanan Surat Pindah',
+            'nama_antrian' => 'KIA',
+            'kode'         => 'KIA',
+            'slug'         => 'antrian-kia',
+            'batas_antrian' => 20,
+            'deskripsi'    => 'Ambil antrian untuk mengurus KIA',
+            'user_id'      => 1,
+        ]);
+
+        Antrian::create([
+            'nama_antrian' => 'Akta',
+            'kode'         => 'AKT',
+            'slug'         => 'antrian-akta',
+            'batas_antrian' => 20,
+            'deskripsi'    => 'Ambil antrian untuk mengurus Akta',
+            'user_id'      => 1,
+        ]);
+
+        Antrian::create([
+            'nama_antrian' => 'Surat Pindah',
             'kode'         => 'SP',
-            'slug'         => 'layanan-surat-pindah',
+            'slug'         => 'antrian-surat-pindah',
             'batas_antrian' => 20,
             'deskripsi'    => 'Ambil antrian untuk mengurus Surat Pindah',
-            'persyaratan'  => 'Berkas yang dibawa Fotocopy KK',
             'user_id'      => 1,
         ]);
 
         Layanan::create([
-            'nama_layanan' => 'Layanan E-KTP',
+            'antrian_id' => 1,
+            'nama_layanan' => 'Pembaharuan KK',
+            'kode'         => 'KK',
+            'persyaratan'    => 'Pelayanan dan pengurusan Pembaharuan Kartu Keluarga (KK)',
+            'user_id'      => 1
+        ]);
+
+        Layanan::create([
+            'antrian_id' => 1,
+            'nama_layanan' => 'Penambahan Anak',
+            'kode'         => 'KK',
+            'persyaratan'    => 'Pelayanan dan pengurusan Kartu Keluarga (KK)',
+            'user_id'      => 1
+        ]);
+
+        Layanan::create([
+            'antrian_id' => 2,
+            'nama_layanan' => 'Penerbitan E-KTP',
             'kode'         => 'KTP',
-            'deskripsi'    => 'Pelayanan dan pengurusan E-KTP',
+            'persyaratan'    => 'Pelayanan dan pengurusan E-KTP',
             'user_id'      => 1
         ]);
 
         Layanan::create([
-            'nama_layanan' => 'Layanan Kartu Keluarga',
-            'kode'         => 'KK',
-            'deskripsi'    => 'Pelayanan dan pengurusan Kart Keluarga (KK)',
+            'antrian_id' => 3,
+            'nama_layanan' => 'Penerbitan KIA',
+            'kode'         => 'KIA',
+            'persyaratan'    => 'Pelayanan dan pengurusan KIA',
             'user_id'      => 1
         ]);
 
         Layanan::create([
-            'nama_layanan' => 'Layanan Akta Kelahiran',
-            'kode'         => 'AKKEL',
-            'deskripsi'    => 'Pelayanan dan pengurusan Akta Kelahiran',
+            'antrian_id' => 4,
+            'nama_layanan' => 'Akta Kelahiran',
+            'kode'         => 'AKT',
+            'persyaratan'    => 'Pelayanan dan pengurusan Akta',
             'user_id'      => 1
         ]);
 
         Layanan::create([
-            'nama_layanan' => 'Layanan Surat Pindah',
-            'kode'         => 'KK',
-            'deskripsi'    => 'Pelayanan dan pengurusan Surat Pindah',
+            'antrian_id' => 5,
+            'nama_layanan' => 'Pindah Datang WNI',
+            'kode'         => 'SP',
+            'persyaratan'    => 'Pelayanan dan pengurusan Surat Pindah\n ok',
             'user_id'      => 1
         ]);
 

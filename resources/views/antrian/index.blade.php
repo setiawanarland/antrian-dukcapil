@@ -22,77 +22,41 @@
     </div> --}}
 
     <!-- ======= Modal Pilih Layanan ======= -->
-    <div class="modal fade bd-example-modal-lg" id="modalPilihLayanan" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Pilih Layanan</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
-                                    data-bs-animation="ease">
-                                    Accordion Item #1
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <div class="card card-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                        richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                        cred nesciunt sapiente ea proident.
+    @foreach ($antrianList as $antrian)
+        <div class="modal fade bd-example-modal-lg" id="modalPilihLayanan{{ $antrian->id }}" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Pilih Layanan {{ $antrian->nama_antrian }}</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="accordion" id="accordionExample">
+                            @foreach ($antrian->layanan as $layanan)
+                                <div class="accordion-item mt-3">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapse{{ $layanan->id }}" aria-expanded="false"
+                                            aria-controls="collapse{{ $layanan->id }}">
+                                            {{ $layanan->nama_layanan }}
+                                        </button>
+                                    </h2>
+                                    <div id="collapse{{ $layanan->id }}" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            {{ $layanan->persyaratan }}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Accordion Item #2
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <strong>This is the second item’s accordion body.</strong> It is hidden by default,
-                                    until the collapse plugin adds the appropriate classes that we use to style each
-                                    element. These classes control the overall appearance, as well as the showing and hiding
-                                    via CSS transitions. You can modify any of this with custom CSS or overriding our
-                                    default variables. It’s also worth noting that just about any HTML can go within the
-                                    <code>.accordion-body</code>, though the transition does limit overflow.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Accordion Item #3
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <strong>This is the third item’s accordion body.</strong> It is hidden by default, until
-                                    the collapse plugin adds the appropriate classes that we use to style each element.
-                                    These classes control the overall appearance, as well as the showing and hiding via CSS
-                                    transitions. You can modify any of this with custom CSS or overriding our default
-                                    variables. It’s also worth noting that just about any HTML can go within the
-                                    <code>.accordion-body</code>, though the transition does limit overflow.
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
-    </div>
+    @endforeach
 
 
     <!-- ======= View Antrian Depan / Frontend ======= -->
@@ -125,17 +89,16 @@
 
                 <!-- Menampilkan Data Antrian -->
                 @foreach ($antrianList as $key => $antrian)
-                    <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="col-md-3 mt-3" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon-box">
 
                             <div class="icon"><i class="bx bx-link-external"></i></div>
-                            <h4>{{ $antrian->nama_layanan }}</h4>
-                            {{-- <p>{{ $antrian->syarat }}</p> --}}
+                            <h4>{{ $antrian->nama_antrian }}</h4>
 
                             <!-- Mengecek Apakah User Sudah Login Atau Belum -->
                             <div class="mt-3">
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-id="{{ $antrian->id }}" data-bs-target="#modalPilihLayanan">
+                                    data-id="{{ $antrian->id }}" data-bs-target="#modalPilihLayanan{{ $antrian->id }}">
                                     Ambil Antrian
                                 </button>
                                 <!-- @auth -->
@@ -146,12 +109,12 @@
                                     <!--
     @else
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-id="{{ $antrian->id }}" data-bs-target="#exampleModal">
-                                                                                                                                                                                                                                                                                                          Ambil Antrian
-                                                                                                                                                                                                                                                                                                        </button>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Ambil Antrian
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </button>
         @endif -->
                                     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-id="{{ $antrian->id }}" data-bs-target="#exampleModal">
-                                                                                                                                                                                                                                                                                                          Ambil Antrian
-                                                                                                                                                                                                                                                                                                        </button> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Ambil Antrian
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </button> -->
                                     <!-- Jika Kondisi Sudah Pernah Mengambil Antrian Di Layanan Yang Sama, Maka Muncul Alert Anda Sudah Mengambil Antrian ini -->
                                     <!--
     @else

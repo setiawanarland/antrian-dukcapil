@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('antrians', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_layanan');
+            $table->string('nama_antrian');
             $table->string('kode');
             $table->text('deskripsi');
             $table->string('slug')->unique();
-            $table->text('persyaratan');
             $table->integer('batas_antrian');
             $table->foreignId('user_id');
             $table->timestamps();

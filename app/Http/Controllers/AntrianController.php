@@ -20,9 +20,9 @@ class AntrianController extends Controller
     public function index(Antrian $antrian)
     {
         $kode = $antrian->kode;
-        // return Antrian::all();
+        // dd(Antrian::with('layanan')->get());
         return view('antrian.index', [
-            'antrianList'   => Antrian::all(),
+            'antrianList'   => Antrian::with('layanan')->get(),
             'antrian'       => $antrian,
             'kode'          => $kode,
         ]);

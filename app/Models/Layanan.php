@@ -17,6 +17,6 @@ class Layanan extends Model
 
     public function antrians()
     {
-        return $this->hasMany(Antrian::class);
+        return $this->belongsTo(Antrian::class, 'id', 'antrian_id');
     }
 }
