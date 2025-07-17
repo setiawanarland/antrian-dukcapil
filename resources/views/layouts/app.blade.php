@@ -13,12 +13,11 @@
 
     <!-- Custom fonts for this template-->
     <link href="/dashboardAssets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="/assets/css/googleFont.css"
-        rel="stylesheet">
+    <link href="/assets/css/googleFont.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="/dashboardAssets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -37,6 +36,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/dashboardAssets/js/sb-admin-2.min.js"></script>
+    <script src="/assets/js/auth.js"></script>
 
 </body>
 
