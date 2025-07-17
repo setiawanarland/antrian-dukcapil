@@ -25,7 +25,7 @@
     @foreach ($antrianList as $antrian)
         <div class="modal fade bd-example-modal-lg" id="modalPilihLayanan{{ $antrian->id }}" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Pilih Layanan {{ $antrian->nama_antrian }}</h1>
@@ -45,7 +45,12 @@
                                     <div id="collapse{{ $layanan->id }}" class="accordion-collapse collapse"
                                         data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            {{ $layanan->persyaratan }}
+                                            <h6>Dokumen Persyaratan:</h6>
+                                            <ul class="list-group">
+                                                @foreach ($layanan->persyaratan as $peryaratan)
+                                                    <ul class="list-group-item">{{ $peryaratan->persyaratan }}</ul>
+                                                @endforeach
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -109,12 +114,12 @@
                                     <!--
     @else
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-id="{{ $antrian->id }}" data-bs-target="#exampleModal">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Ambil Antrian
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </button>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Ambil Antrian
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </button>
         @endif -->
                                     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-id="{{ $antrian->id }}" data-bs-target="#exampleModal">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          Ambil Antrian
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </button> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Ambil Antrian
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </button> -->
                                     <!-- Jika Kondisi Sudah Pernah Mengambil Antrian Di Layanan Yang Sama, Maka Muncul Alert Anda Sudah Mengambil Antrian ini -->
                                     <!--
     @else

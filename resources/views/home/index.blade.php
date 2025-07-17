@@ -58,7 +58,7 @@
                     <i class="ri-file-copy-2-fill"></i>
                     <h3>Formulir</h3>
                 </a>
-                <a href="/web" class="icon-box oauthButton mt-1" data-aos="fade-up" data-aos-offset="50"
+                <a href="/home" class="icon-box oauthButton mt-1" data-aos="fade-up" data-aos-offset="50"
                     data-aos-easing="ease-in-sine">
                     <i class="ri-global-line"></i>
                     <h3>Website Disdukcapil</h3>
