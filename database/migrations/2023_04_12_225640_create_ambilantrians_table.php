@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('nomorhp');
             $table->integer('batas_antrian')->nullable();
             $table->foreignId('antrian_id');
+            $table->foreignId('layanan_id');
             $table->foreignId('user_id');
             $table->timestamps();
         });

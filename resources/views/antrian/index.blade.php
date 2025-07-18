@@ -32,30 +32,39 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="accordion" id="accordionExample">
-                            @foreach ($antrian->layanan as $layanan)
-                                <div class="accordion-item mt-3">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapse{{ $layanan->id }}" aria-expanded="false"
-                                            aria-controls="collapse{{ $layanan->id }}">
-                                            {{ $layanan->nama_layanan }}
-                                        </button>
-                                    </h2>
-                                    <div id="collapse{{ $layanan->id }}" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <h6>Dokumen Persyaratan:</h6>
-                                            <ul class="list-group">
-                                                @foreach ($layanan->persyaratan as $peryaratan)
-                                                    <ul class="list-group-item">{{ $peryaratan->persyaratan }}</ul>
-                                                @endforeach
-                                            </ul>
+                        <form action="{{ route('store.antrian') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="accordion" id="accordionExample">
+                                <input type="hidden" name="antrian_id" id="antrian_id{{ $antrian->id }}"
+                                    value="{{ $antrian->id }}">
+                                @foreach ($antrian->layanan as $layanan)
+                                    <div class="accordion-item mt-3">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapse{{ $layanan->id }}"
+                                                aria-expanded="false" aria-controls="collapse{{ $layanan->id }}">
+                                                {{ $layanan->nama_layanan }}
+                                            </button>
+                                        </h2>
+                                        <div id="collapse{{ $layanan->id }}" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <input type="hidden" name="layanan_id" id="layanan_id{{ $layanan->id }}"
+                                                    value="{{ $layanan->id }}">
+                                                <h6>Dokumen Persyaratan:</h6>
+                                                <ul class="list-group">
+                                                    @foreach ($layanan->persyaratan as $peryaratan)
+                                                        <ul class="list-group-item">{{ $peryaratan->persyaratan }}</ul>
+                                                    @endforeach
+                                                </ul>
+                                                <button id="btnSimpan" type="submit"
+                                                    class="btn btn-primary mt-2">Pilih</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
-                        </div>
+                                @endforeach
+                            </div>
+                        </form>
                     </div>
 
                 </div>
@@ -102,20 +111,15 @@
 
                             <!-- Mengecek Apakah User Sudah Login Atau Belum -->
                             <div class="mt-3">
-                                {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-id="{{ $antrian->id }}" data-bs-target="#modalPilihLayanan{{ $antrian->id }}">
-                                    Ambil Antrian
-                                </button> --}}
                                 @auth
+                                    {{-- @dd($user->ambilantrians) --}}
                                     <!-- Jika Kondisi Belum Login, Maka Menampilkan Alert Anda harus Login Dahulu -->
-                                    @if ($antrian->ambilantrians->contains('user_id', Auth::id()))
-                                        <button type="button" class="btn btn-danger" id="containsButon" data-bs-toggle="modal"
-                                            data-id="{{ $antrian->id }}"
-                                            data-bs-target="#modalPilihLayanan{{ $antrian->id }}">
+                                    @if ($user->ambilantrians->contains('user_id', Auth::id()))
+                                        <button type="button" class="btn btn-danger containsButton"
+                                            id="containsButton{{ $key }}" data-id="{{ $antrian->id }}">
                                             Ambil Antrian
                                         </button>
-                                        {{-- <button type="button" class="btn btn-primary" id="containsButton">Ambil
-                                            Antrian</button> --}}
+
                                         <!-- Jika Kondisi Sudah Login, Maka Menampilkan Modal Tambah Antrian-->
                                     @else
                                         <button type="button" class="btn btn-success" data-bs-toggle="modal"
@@ -136,24 +140,6 @@
                                 <div id="containsButtonlivePlaceholder"></div>
                             </div>
                         </div>
-
-                        <!-- Menampilkan Accordion Yang Berisi Informasi & Persyaratan layanan -->
-                        {{-- <div class="accordion" id="accordionExample{{ $key }}">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button" type="button" data-bs-toggle="modal"
-                                        data-id="{{ $antrian->id }}" data-bs-target="#exampleModal">
-                                        Detail Layanan
-                                    </button>
-                                </h2>
-                                <div id="collapse{{ $key }}" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionExample{{ $key }}">
-                                    <div class="accordion-body">
-                                        {{ $antrian->persyaratan }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
                     </div>
                 @endforeach
             </div>
@@ -220,13 +206,13 @@
             alertPlaceholder2.append(wrapper)
         }
 
-        const alertTrigger = document.getElementById('containsButton')
-        if (alertTrigger) {
-            alertTrigger.addEventListener('click', () => {
+        const containTriggers = document.querySelectorAll('[id^="containsButton"]')
+        containTriggers.forEach(containTrigger => {
+            containTrigger.addEventListener('click', () => {
                 appendAlert(
-                    'Anda sudah mengambil antrian ini, <a href="/antrian/detail" class="alert-link">Cek Detail</a>',
+                    'Anda sudah mengambil antrian, silakan selesaikan terlebih dahulu antrian Anda! <a href="/antrian/detail" class="alert-link">Cek Detail</a>',
                     'danger')
             })
-        }
+        })
     </script>
 @endsection

@@ -149,8 +149,25 @@ class DatabaseSeeder extends Seeder
 			'pekerjaan'     => 'admin',
 			'name'      	=> 'Admin',
 			'email'     	=> 'admin@gmail.com',
+			'nohp'     	=> '082182004211',
 			'password'  	=> bcrypt('1234'),
 			'roles'     	=> 'admin'
+		]);
+
+		User::create([
+			'nik'       	=> 7304072610950002,
+			'tempat_lahir'  => 'jeneponto',
+			'tanggal_lahir' => Carbon::create('1995', '10', '26'),
+			'jenis_kelamin' => 'laki-laki',
+			'alamat'      	=> 'jl. pahlawan',
+			'desa'      	=> 'empoang',
+			'kec'      		=> 'binamu',
+			'pekerjaan'     => 'admin',
+			'name'      	=> 'Admin',
+			'email'     	=> 'adminn@gmail.com',
+			'nohp'     	=> '082182004211',
+			'password'  	=> bcrypt('12345'),
+			'roles'     	=> 'masyarakat'
 		]);
 	}
 }

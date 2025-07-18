@@ -28,6 +28,7 @@ class User extends Authenticatable
         'kec',
         'pekerjaan',
         'email',
+        'nohp',
         'password',
     ];
 
@@ -53,5 +54,15 @@ class User extends Authenticatable
     public function hasRoles($roles)
     {
         return $this->roles === $roles;
+    }
+
+    public function antrian()
+    {
+        return $this->hasOne(Antrian::class);
+    }
+
+    public function Ambilantrians()
+    {
+        return $this->hasMany(Ambilantrian::class);
     }
 }

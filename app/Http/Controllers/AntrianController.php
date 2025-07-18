@@ -8,6 +8,9 @@ use App\Models\Ambilantrian;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\PDF;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Support\Carbon as SupportCarbon;
 use Illuminate\Support\Facades\Storage;
 
 class AntrianController extends Controller
@@ -21,10 +24,11 @@ class AntrianController extends Controller
     {
         $kode = $antrian->kode;
         // dd(Antrian::with(['layanan', 'persyaratan'])->get());
-        // return Antrian::with(['layanan.persyaratan'])->get();
+        // return $antrian;
         return view('antrian.index', [
             'antrianList'   => Antrian::with('layanan')->get(),
             'antrian'       => $antrian,
+            'user'         => User::where('id', auth()->user()->id)->first(),
             'kode'          => $kode,
         ]);
     }
@@ -52,18 +56,15 @@ class AntrianController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'tanggal'       => 'required',
-            'nama_lengkap'  => 'required',
-            'alamat'        => 'required',
-            'nomorhp'       => 'required',
             'antrian_id'    => 'required',
+            'layanan_id'    => 'required',
         ]);
 
         $antrian        = Antrian::findOrFail($validated['antrian_id']);
         $service_code   = $antrian->kode;
 
         // ambil record terakhir dari tabel Ambilantrian berdasarkan tanggal dan kode
-        $last_record = Ambilantrian::where('tanggal', $validated['tanggal'])
+        $last_record = Ambilantrian::where('tanggal', Carbon::now())
             ->where('kode', 'like', $service_code . '%')
             ->orderBy('created_at', 'desc')
             ->first();
@@ -83,15 +84,15 @@ class AntrianController extends Controller
 
         // validasi untuk memastikan tidak terjadi duplikasi pada kode antrian pada tanggal yang sama
         $kode_antrian = $service_code . '-' . $next_kode;
-        $existing_record = Ambilantrian::where('kode', $kode_antrian)->where('tanggal', $validated['tanggal'])->first();
+        $existing_record = Ambilantrian::where('kode', $kode_antrian)->where('tanggal', Carbon::now())->first();
         if ($existing_record) {
-            return redirect('/antrian')->with('error', 'Maaf,gagal mengambil antrian. Silahkan ambil di hari lain');
+            return redirect('/antrian')->with('error', 'Maaf, Anda sudah mengambil antrian ini. Silahkan ambil di hari lain');
         }
 
 
         // Mengecek apakah jumlah antrian pada tabel ambilantrian
         $antrian_count = Ambilantrian::where('antrian_id', $validated['antrian_id'])
-            ->where('tanggal', $validated['tanggal'])
+            ->where('tanggal', Carbon::now())
             ->count();
 
         // Mengecek apakah jumlah antrian pada tabel antrian
@@ -107,8 +108,12 @@ class AntrianController extends Controller
         $validated['kode'] = $service_code . '-' . $next_kode_padded;
 
         $validated['user_id'] = auth()->user()->id;
-        $validated['tanggal'] = $validated['tanggal']; // tambahkan kolom tanggal
+        $validated['nama_lengkap'] = auth()->user()->name;
+        $validated['alamat'] = auth()->user()->alamat;
+        $validated['nomorhp'] = auth()->user()->nohp;
+        $validated['tanggal'] = Carbon::now(); // tambahkan kolom tanggal
 
+        // return $validated;
         Ambilantrian::create($validated);
         return redirect('/antrian')->with('success', 'Berhasil Mengambil Antrian');
     }
