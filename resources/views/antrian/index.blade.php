@@ -102,30 +102,37 @@
 
                             <!-- Mengecek Apakah User Sudah Login Atau Belum -->
                             <div class="mt-3">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-id="{{ $antrian->id }}" data-bs-target="#modalPilihLayanan{{ $antrian->id }}">
                                     Ambil Antrian
-                                </button>
-                                <!-- @auth -->
+                                </button> --}}
+                                @auth
                                     <!-- Jika Kondisi Belum Login, Maka Menampilkan Alert Anda harus Login Dahulu -->
-                                    <!-- @if ($antrian->ambilantrians->contains('user_id', Auth::id()))
-        <button type="button" class="btn btn-primary" id="containsButton">Ambil Antrian</button> -->
-                                    <!-- Jika Kondisi Sudah Login, Maka Menampilkan Modal Tambah Antrian-->
-                                    <!--
-    @else
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-id="{{ $antrian->id }}" data-bs-target="#exampleModal">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Ambil Antrian
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </button>
-        @endif -->
-                                    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-id="{{ $antrian->id }}" data-bs-target="#exampleModal">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  Ambil Antrian
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </button> -->
+                                    @if ($antrian->ambilantrians->contains('user_id', Auth::id()))
+                                        <button type="button" class="btn btn-danger" id="containsButon" data-bs-toggle="modal"
+                                            data-id="{{ $antrian->id }}"
+                                            data-bs-target="#modalPilihLayanan{{ $antrian->id }}">
+                                            Ambil Antrian
+                                        </button>
+                                        {{-- <button type="button" class="btn btn-primary" id="containsButton">Ambil
+                                            Antrian</button> --}}
+                                        <!-- Jika Kondisi Sudah Login, Maka Menampilkan Modal Tambah Antrian-->
+                                    @else
+                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                            data-id="{{ $antrian->id }}"
+                                            data-bs-target="#modalPilihLayanan{{ $antrian->id }}">
+                                            Ambil Antrian
+                                        </button>
+                                        {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-id="{{ $antrian->id }}" data-bs-target="#exampleModal">
+                                            Ambil Antrian
+                                        </button> --}}
+                                    @endif
                                     <!-- Jika Kondisi Sudah Pernah Mengambil Antrian Di Layanan Yang Sama, Maka Muncul Alert Anda Sudah Mengambil Antrian ini -->
-                                    <!--
-    @else
-        -->
-                                    <!-- <button type="button" class="btn btn-primary" id="liveAlertBtn{{ $key }}" data-id="{{ $key }}">Ambil Antrian</button> -->
-                                <!-- @endauth -->
+                                @else
+                                    <button type="button" class="btn btn-secondary" id="liveAlertBtn{{ $key }}"
+                                        data-id="{{ $key }}">Ambil Antrian</button>
+                                @endauth
                                 <div id="containsButtonlivePlaceholder"></div>
                             </div>
                         </div>
@@ -189,11 +196,7 @@
         if (alertTriggers.length > 0) {
             alertTriggers.forEach(alertTrigger => {
                 alertTrigger.addEventListener('click', () => {
-                    const auth = {
-                        {
-                            auth() - > check() ? 'true' : 'false'
-                        }
-                    };
+                    const auth = {{ auth()->check() ? 'true' : 'false' }};
                     if (!auth) {
                         appendAlert('Anda harus login terlebih dahulu', 'warning')
                     }
