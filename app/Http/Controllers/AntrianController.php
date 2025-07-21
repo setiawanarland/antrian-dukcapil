@@ -24,13 +24,21 @@ class AntrianController extends Controller
     {
         $kode = $antrian->kode;
         // dd(Antrian::with(['layanan', 'persyaratan'])->get());
-        // return $antrian;
-        return view('antrian.index', [
-            'antrianList'   => Antrian::with('layanan')->get(),
-            'antrian'       => $antrian,
-            'user'         => User::where('id', auth()->user()->id)->first(),
-            'kode'          => $kode,
-        ]);
+        // return auth()->user();
+        if (auth()->user()) {
+            return view('antrian.index', [
+                'antrianList'   => Antrian::with('layanan')->get(),
+                'antrian'       => $antrian,
+                'user'         => User::where('id', auth()->user()->id)->first(),
+                'kode'          => $kode,
+            ]);
+        } else {
+            return view('antrian.index', [
+                'antrianList'   => Antrian::with('layanan')->get(),
+                'antrian'       => $antrian,
+                'kode'          => $kode,
+            ]);
+        }
     }
 
     /**

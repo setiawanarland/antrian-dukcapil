@@ -103,6 +103,7 @@
 
                 <!-- Menampilkan Data Antrian -->
                 @foreach ($antrianList as $key => $antrian)
+                    {{-- @dd($user->ambilantrians) --}}
                     <div class="col-md-3 mt-3" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon-box">
 
@@ -112,7 +113,6 @@
                             <!-- Mengecek Apakah User Sudah Login Atau Belum -->
                             <div class="mt-3">
                                 @auth
-                                    {{-- @dd($user->ambilantrians) --}}
                                     <!-- Jika Kondisi Belum Login, Maka Menampilkan Alert Anda harus Login Dahulu -->
                                     @if ($user->ambilantrians->contains('user_id', Auth::id()))
                                         <button type="button" class="btn btn-danger containsButton"
