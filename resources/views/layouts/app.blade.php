@@ -18,7 +18,7 @@
     <!-- Custom styles for this template-->
     <link href="/dashboardAssets/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet">
-    <link href="/assets/css/select2.min.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap-select.min.css" rel="stylesheet">
 
 </head>
 
@@ -38,12 +38,12 @@
     <!-- Custom scripts for all pages-->
     <script src="/dashboardAssets/js/sb-admin-2.min.js"></script>
     <script src="/assets/js/auth.js"></script>
-    <script src="/assets/js/select2.min.js"></script>
+    <script src="/assets/js/bootstrap-select.min.js"></script>
 
     <script>
         $(document).ready(function() {
-            // Select2 init
-            $('.select2').select2();
+            // Selectpicker init
+            $('.selectpicker').selectpicker();
         });
     </script>
 
