@@ -44,6 +44,49 @@
         $(document).ready(function() {
             // Selectpicker init
             $('.selectpicker').selectpicker();
+
+            // get data kec from api
+            const selectKec = document.getElementById("kecamatan");
+
+            const getKec = async () => {
+                const response = await fetch("https://open-api.my.id/api/wilayah/districts/7304");
+                const data = await response.json();
+                return data;
+            };
+
+            const displayOption = async (getData, selectInput) => {
+                const options = await getData();
+                for (option of options) {
+                    const newOption = document.createElement("option");
+                    newOption.value = option.id;
+                    newOption.text = option.name;
+                    selectInput.appendChild(newOption);
+                    $('.selectpicker').selectpicker('refresh');
+                };
+            };
+
+            displayOption(getKec, selectKec);
+
+            $('#kecamatan').on('change', function() {
+
+                $('.selectpicker').selectpicker('refresh');
+
+                let idKec = $(this).val();
+                // get data desa from api
+                const selectDesa = document.getElementById("desa_kel");
+
+                const getDesa = async () => {
+                    const response = await fetch(
+                        `https://open-api.my.id/api/wilayah/villages/${idKec}`);
+                    const data = await response.json();
+                    return data;
+                };
+
+                $('#desa_kel').empty();
+
+                displayOption(getDesa, selectDesa);
+
+            });
         });
     </script>
 

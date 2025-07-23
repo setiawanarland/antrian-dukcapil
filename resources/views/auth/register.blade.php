@@ -106,35 +106,30 @@
                             <div class="row">
                                 <div class="col-md-6 mb-2">
                                     <div class="form-group">
-                                        <select class="form-control selectpicker show-tick show-menu-arrow" id="kecamatan"
-                                            name="kecamatan" data-live-search="true" title="Kecamatan Anda ..."
-                                            data-size="5">
-                                            <option></option>
-                                            <option>Reactive</option>
-                                            <option>Solution</option>
-                                            <option>Conglomeration</option>
-                                            <option>Algoritm</option>
-                                            <option>Holistic</option>
-                                            <option>Holistic</option>
-                                            <option>Holistic</option>
-                                            <option>Holistic</option>
+                                        <select
+                                            class="form-control selectpicker show-tick show-menu-arrow  @error('kecamatan') is-invalid @enderror"
+                                            id="kecamatan" name="kecamatan" data-live-search="true"
+                                            title="Kecamatan Anda ..." data-size="5">
                                         </select>
+                                        @error('kecamatan')
+                                            <span class="invalid-feedback" role="alert">
+                                                <p>{{ $message }}</p>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-2">
                                     <div class="form-group">
-                                        <select class="form-control selectpicker show-tick show-menu-arrow" id="desa-kel"
-                                            name="desa-kel" data-live-search="true" title="Desa Anda ..." data-size="5">
-                                            <option></option>
-                                            <option>Reactive</option>
-                                            <option>Solution</option>
-                                            <option>Conglomeration</option>
-                                            <option>Algoritm</option>
-                                            <option>Holistic</option>
-                                            <option>Holistic</option>
-                                            <option>Holistic</option>
-                                            <option>Holistic</option>
+                                        <select
+                                            class="form-control selectpicker show-tick show-menu-arrow  @error('desa_kel') is-invalid @enderror"
+                                            id="desa_kel" name="desa_kel" data-live-search="true" title="Desa Anda ..."
+                                            data-size="5">
                                         </select>
+                                        @error('desa_kel')
+                                            <span class="invalid-feedback" role="alert">
+                                                <p>{{ $message }}</p>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
