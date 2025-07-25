@@ -6,7 +6,7 @@
             <div class="col-12 col-lg-9 col-xl-7">
                 <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                     <div class="card-body p-4 p-md-5">
-                        <div class="col-lg-12 text-center">
+                        {{-- <div class="col-lg-12 text-center">
                             <img src="{{ asset('dashboardAssets/img/Logo_Jeneponto.png') }}" alt=""
                                 style="width: 20%; height: 20%; object-fit: contain; align-self: center;">
                         </div>
@@ -14,7 +14,7 @@
                             <h3 class="h4 text-gray-900 mt-2 mb-2 pb-2 pb-md-0 mb-md-2">Buat Akun Sistem Antrian Dukcapil
                             </h3>
                             <hr>
-                        </div>
+                        </div> --}}
                         <form action="{{ route('register') }}" class="user" method="POST">
                             @csrf
                             <div class="row">

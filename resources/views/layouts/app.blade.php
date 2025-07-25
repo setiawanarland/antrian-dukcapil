@@ -49,7 +49,7 @@
             const selectKec = document.getElementById("kecamatan");
 
             const getKec = async () => {
-                const response = await fetch("https://open-api.my.id/api/wilayah/districts/7304");
+                const response = await fetch("https://ibnux.github.io/data-indonesia/kecamatan/7304.json");
                 const data = await response.json();
                 return data;
             };
@@ -58,8 +58,9 @@
                 const options = await getData();
                 for (option of options) {
                     const newOption = document.createElement("option");
-                    newOption.value = option.id;
-                    newOption.text = option.name;
+                    newOption.value = option.nama;
+                    newOption.text = option.nama;
+                    newOption.dataset.id = option.id;
                     selectInput.appendChild(newOption);
                     $('.selectpicker').selectpicker('refresh');
                 };
@@ -68,16 +69,15 @@
             displayOption(getKec, selectKec);
 
             $('#kecamatan').on('change', function() {
+                console.log($(this).find(':selected').data('id'));
 
-                $('.selectpicker').selectpicker('refresh');
-
-                let idKec = $(this).val();
+                let idKec = $(this).find(':selected').data('id');
                 // get data desa from api
                 const selectDesa = document.getElementById("desa_kel");
 
                 const getDesa = async () => {
                     const response = await fetch(
-                        `https://open-api.my.id/api/wilayah/villages/${idKec}`);
+                        `https://ibnux.github.io/data-indonesia/kelurahan/${idKec}.json`);
                     const data = await response.json();
                     return data;
                 };
