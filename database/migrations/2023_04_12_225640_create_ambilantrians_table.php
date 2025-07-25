@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('kode');
             $table->string('nama_lengkap');
             $table->text('alamat');
-            $table->string('nomorhp');
             $table->integer('batas_antrian')->nullable();
             $table->foreignId('antrian_id');
             $table->foreignId('layanan_id');

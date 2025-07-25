@@ -50,16 +50,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        dd($data);
         return Validator::make($data, [
-            'nik' => ['required', 'string', 'max:16'],
+            'nik' => ['required', 'unique:users'],
             'name' => ['required', 'string', 'max:255'],
             'tempat_lahir' => ['required', 'string', 'max:255'],
-            'tanggal_lahir' => ['required', 'date_format:Y-m-d|after:today'],
-            'Jenis_kelamin' => ['required', 'string', 'max:255'],
+            'tanggal_lahir' => ['required', 'string', 'max:255'],
             'alamat' => ['required', 'string', 'max:255'],
-            'kecamatan' => ['required', 'string', 'max:255'],
             'desa_kel' => ['required', 'string', 'max:255'],
+            'kecamatan' => ['required', 'string', 'max:255'],
             'pekerjaan' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -74,9 +72,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        dd("ok");
         return User::create([
+            'nik' => $data['nik'],
             'name' => $data['name'],
+            'tempat_lahir' => $data['tempat_lahir'],
+            'tanggal_lahir' => $data['tanggal_lahir'],
+            'alamat' => $data['alamat'],
+            'desa' => $data['desa_kel'],
+            'kec' => $data['kecamatan'],
+            'pekerjaan' => $data['pekerjaan'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

@@ -19,11 +19,12 @@
                             @csrf
                             <div class="row">
                                 <div class="col-md-6 mb-2">
+                                    <input type="hidden" name="roles" value="masyarakat">
 
                                     <div class="form-group">
                                         <input type="number" onKeyPress="if(this.value.length==16) return false;"
                                             class="form-control @error('nik')is-invalid @enderror" id="nik"
-                                            name="nik" placeholder="16 Digit NIK Anda ...">
+                                            name="nik" placeholder="16 Digit NIK Anda ..." value="{{ old('nik') }}">
                                         @error('nik')
                                             <span class="invalid-feedback" role="alert">
                                                 <p>{{ $message }}</p>
@@ -36,7 +37,8 @@
 
                                     <div class="form-group">
                                         <input type="name" class="form-control @error('name') is-invalid @enderror"
-                                            id="name" name="name" placeholder="Nama Lengkap Anda ...">
+                                            id="name" name="name" placeholder="Nama Lengkap Anda ..."
+                                            value="{{ old('name') }}">
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <p>{{ $message }}</p>
@@ -52,7 +54,8 @@
                                     <div class="form-group">
                                         <input type="tempat_lahir"
                                             class="form-control @error('tempat_lahir') is-invalid @enderror"
-                                            id="tempat_lahir" name="tempat_lahir" placeholder="Tempat Lahir Anda ...">
+                                            id="tempat_lahir" name="tempat_lahir" placeholder="Tempat Lahir Anda ..."
+                                            value="{{ old('tempat_lahir') }}">
                                         @error('tempat_lahir')
                                             <span class="invalid-feedback" role="alert">
                                                 <p>{{ $message }}</p>
@@ -65,7 +68,8 @@
                                     <div class="form-group">
                                         <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')"
                                             class="form-control @error('tanggal_lahir') is-invalid @enderror"
-                                            id="tanggal_lahir" name="tanggal_lahir" placeholder="Tanggal Lahir Anda ...">
+                                            id="tanggal_lahir" name="tanggal_lahir" placeholder="Tanggal Lahir Anda ..."
+                                            value="{{ old('tanggal_lahir') }}">
                                         @error('tanggal_lahir')
                                             <span class="invalid-feedback" role="alert">
                                                 <p>{{ $message }}</p>
@@ -93,7 +97,8 @@
                                 <div class="col-md-6 mb-2">
                                     <div class="form-group">
                                         <input type="text" class="form-control @error('alamat') is-invalid @enderror"
-                                            id="alamat" name="alamat" placeholder="Alamat Anda ...">
+                                            id="alamat" name="alamat" placeholder="Alamat Anda ..."
+                                            value="{{ old('alamat') }}">
                                         @error('alamat')
                                             <span class="invalid-feedback" role="alert">
                                                 <p>{{ $message }}</p>
@@ -139,7 +144,8 @@
                                     <div class="form-group">
                                         <input type="text"
                                             class="form-control @error('pekerjaan') is-invalid @enderror" id="pekerjaan"
-                                            name="pekerjaan" placeholder="Pekerjaan Anda ...">
+                                            name="pekerjaan" placeholder="Pekerjaan Anda ..."
+                                            value="{{ old('pekerjaan') }}">
                                         @error('pekerjaan')
                                             <span class="invalid-feedback" role="alert">
                                                 <p>{{ $message }}</p>
@@ -150,7 +156,8 @@
                                 <div class="col-md-6 mb-2">
                                     <div class="form-group">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            id="email" name="email" placeholder="Alamat Email ...">
+                                            id="email" name="email" placeholder="Alamat Email ..."
+                                            value="{{ old('email') }}">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <p>{{ $message }}</p>
@@ -164,7 +171,7 @@
                                     <div class="form-group">
                                         <input type="password"
                                             class="form-control @error('password') is-invalid @enderror" id="password"
-                                            name="password" placeholder="Password">
+                                            name="password" placeholder="Password" value="{{ old('password') }}">
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <p>{{ $message }}</p>
@@ -177,7 +184,7 @@
                                         <input type="password"
                                             class="form-control @error('password') is-invalid @enderror"
                                             id="password_confirmation" name="password_confirmation"
-                                            placeholder="Ulangi Password">
+                                            placeholder="Ulangi Password" value="{{ old('password_confirmation') }}">
                                         @error('password_confirmation')
                                             <span class="invalid-feedback" role="alert">
                                                 <p>{{ $message }}</p>

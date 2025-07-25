@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('kec');
             $table->string('pekerjaan');
             $table->string('email')->unique();
-            $table->string('nohp');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('roles', ['masyarakat', 'operator', 'admin']);

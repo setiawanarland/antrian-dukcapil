@@ -149,7 +149,6 @@ class DatabaseSeeder extends Seeder
 			'pekerjaan'     => 'admin',
 			'name'      	=> 'Admin',
 			'email'     	=> 'admin@gmail.com',
-			'nohp'     	=> '082182004211',
 			'password'  	=> bcrypt('1234'),
 			'roles'     	=> 'admin'
 		]);
@@ -165,7 +164,6 @@ class DatabaseSeeder extends Seeder
 			'pekerjaan'     => 'admin',
 			'name'      	=> 'Admin',
 			'email'     	=> 'adminn@gmail.com',
-			'nohp'     	=> '082182004211',
 			'password'  	=> bcrypt('12345'),
 			'roles'     	=> 'masyarakat'
 		]);

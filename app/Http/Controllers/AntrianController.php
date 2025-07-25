@@ -118,7 +118,6 @@ class AntrianController extends Controller
         $validated['user_id'] = auth()->user()->id;
         $validated['nama_lengkap'] = auth()->user()->name;
         $validated['alamat'] = auth()->user()->alamat;
-        $validated['nomorhp'] = auth()->user()->nohp;
         $validated['tanggal'] = Carbon::now(); // tambahkan kolom tanggal
 
         // return $validated;
