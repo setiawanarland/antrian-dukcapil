@@ -15,7 +15,8 @@ class DisplayPanggilanController extends Controller
      */
     public function index()
     {
-        return view('display-panggilan.index',[
+        // return Antrian::all();
+        return view('display-panggilan.index', [
             'antrianList'   => Antrian::all(),
         ]);
     }
@@ -26,13 +27,19 @@ class DisplayPanggilanController extends Controller
         $antrian    = Ambilantrian::where('antrian_id', $antrianId)
             ->orderBy('created_at', 'asc')
             ->first();
-    
-        return response()->json([
-            'kode'      => $antrian->kode,
-        ]);
+
+        if (!$antrian) {
+            return response()->json([
+                'kode'      => '-',
+            ]);
+        } else {
+            return response()->json([
+                'kode'      => $antrian->kode,
+            ]);
+        }
     }
-    
-    
+
+
 
     /**
      * Show the form for creating a new resource.
