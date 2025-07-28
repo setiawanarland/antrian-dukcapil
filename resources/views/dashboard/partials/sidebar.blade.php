@@ -28,21 +28,17 @@
                     <i class="bi bi-list-columns-reverse"></i>
                     <span>Antrian</span></a>
             </li>
-            
+            {{-- <li class="nav-item">
+                <a class="nav-link" href="/dashboard/antrian-masuk">
+                    <i class="bi bi-list-columns-reverse"></i>
+                    <span>Antrian</span></a>
+            </li> --}}
+
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link" href="/dashboard/antrian-masuk">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <span>Antrian Masuk</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Berdasarkan Layanan </h6>
-                        @foreach ($antrians as $antrian)
-                            <a class="collapse-item" href="/dashboard/antrian-masuk/{{ $antrian->slug }}">{{ $antrian->nama_layanan }}</a>
-                        @endforeach   
-                    </div>
-                </div>
             </li>
             <br>
 

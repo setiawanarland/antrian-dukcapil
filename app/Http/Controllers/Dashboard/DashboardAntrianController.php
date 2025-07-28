@@ -60,10 +60,7 @@ class DashboardAntrianController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
-    {
-  
-    }
+    public function show() {}
 
     /**
      * Show the form for editing the specified resource.
@@ -75,8 +72,7 @@ class DashboardAntrianController extends Controller
         return view('dashboard.antrian.edit', [
             'antrian'   => $antrian,
         ]);
-        
-    }   
+    }
 
     /**
      * Update the specified resource in storage.
@@ -90,7 +86,7 @@ class DashboardAntrianController extends Controller
             'kode'          => 'required',
             'deskripsi'     => 'required',
             'persyaratan'   => 'required',
-            'slug'          => 'required|unique:antrians,slug,'.$antrian->id,
+            'slug'          => 'required|unique:antrians,slug,' . $antrian->id,
             'batas_antrian' => 'required|numeric'
         ];
 
@@ -99,9 +95,9 @@ class DashboardAntrianController extends Controller
 
         Antrian::where('id', $antrian->id)
             ->update($validated);
-        
+
         Alert::success('Berhasil !', 'Berhasil Mengedit Menu Antrian');
-        return redirect('/dashboard/antrian');   
+        return redirect('/dashboard/antrian');
     }
 
 
@@ -129,9 +125,8 @@ class DashboardAntrianController extends Controller
     // Method untuk mengambil data dari Model Layanan dimana file yang diambil adalah nama_layanan
     public function getAutoCompleteData(Request $request)
     {
-        if($request->has('term')){
-            return Layanan::where('nama_layanan', 'like', '%' .$request->input('term').'%')->get();
+        if ($request->has('term')) {
+            return Layanan::where('nama_layanan', 'like', '%' . $request->input('term') . '%')->get();
         }
     }
-    
 }

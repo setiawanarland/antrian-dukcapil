@@ -64,7 +64,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/api/dashboard/antrian', [DashboardAntrianController::class, 'getAutoCompleteData']);
     Route::resource('/dashboard/antrian', DashboardAntrianController::class);
     Route::resource('/dashboard/layanan', DashboardLayananController::class);
-    Route::get('/dashboard/antrian-masuk/{antrian:slug}', [DashboardAntrianMasukController::class, 'index']);
+    // Route::get('/dashboard/antrian-masuk/{antrian:slug}', [DashboardAntrianMasukController::class, 'index']);
+    Route::get('/dashboard/antrian-masuk', [DashboardAntrianMasukController::class, 'index']);
     Route::DELETE('/dashboard/antrian-masuk/{antrian:id}', [DashboardAntrianMasukController::class, 'destroy'])->name('antrian.destroy');
     Route::PUT('/dashboard/antrian-masuk/{antrian:id}/skip', [DashboardAntrianMasukController::class, 'skip'])->name('antrian.skip');
     Route::DELETE('/dashboard/antrian-masuk/{slug}/reset', [DashboardAntrianMasukController::class, 'reset']);

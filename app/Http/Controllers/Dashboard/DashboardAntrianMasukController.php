@@ -13,14 +13,20 @@ use RealRashid\SweetAlert\Facades\Alert;
 class DashboardAntrianMasukController extends Controller
 {
     // Menampilkan Data Berdasarkan Slug yang dipilih admin dan diurutkan berdasarkan field created_at secara ascending dan data yang ditampilkan hanya 1 secara bergantuan
-    public function index($slug)
+    public function index()
     {
-        $antrian = Antrian::where('slug', $slug)
+        // $antrian = Antrian::where('slug', $slug)
+        //     ->orderBy('created_at', 'asc')
+        //     ->first();
+
+        $antrianList = Antrian::with(['ambilantrians' => function ($query) {
+            $query->whereDate('tanggal', Carbon::now()->setTimezone('Asia/Jakarta'));
+        }])
             ->orderBy('created_at', 'asc')
-            ->first();
+            ->get();
 
         return view('dashboard.antrian-masuk.index', [
-            'antrian' => $antrian
+            'antrianList' => $antrianList
         ]);
     }
 
@@ -43,12 +49,12 @@ class DashboardAntrianMasukController extends Controller
         alert()->toast('Antrian Dilewati', 'info');
         return redirect()->back();
     }
-    
+
     // Untuk reset antrian masuk
     public function reset()
     {
         Ambilantrian::whereDate('tanggal', Carbon::now()->setTimezone('Asia/Jakarta'))->delete();
-        
+
         Alert::success('Sukses', 'Berhasil Mereset Data Antrian Masuk');
         return redirect()->back();
     }
