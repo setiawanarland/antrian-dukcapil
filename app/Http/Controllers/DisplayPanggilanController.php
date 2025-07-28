@@ -25,6 +25,7 @@ class DisplayPanggilanController extends Controller
     {
         $antrianId  = $request->input('antrian_id');
         $antrian    = Ambilantrian::where('antrian_id', $antrianId)
+            ->whereDate('tanggal', Carbon::now()->setTimezone('Asia/Jakarta'))
             ->orderBy('created_at', 'asc')
             ->first();
 
