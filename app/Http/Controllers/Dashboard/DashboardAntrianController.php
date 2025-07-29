@@ -41,10 +41,10 @@ class DashboardAntrianController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama_layanan'  => 'required',
+            'nama_antrian'  => 'required',
             'kode'          => 'required',
             'deskripsi'     => 'required',
-            'persyaratan'   => 'required',
+            // 'persyaratan'   => 'required',
             'slug'          => 'required|unique:antrians',
             'batas_antrian' => 'required|numeric'
         ]);
@@ -82,10 +82,10 @@ class DashboardAntrianController extends Controller
     public function update(Request $request, Antrian $antrian)
     {
         $rules = [
-            'nama_layanan'  => 'required',
+            'nama_antrian'  => 'required',
             'kode'          => 'required',
             'deskripsi'     => 'required',
-            'persyaratan'   => 'required',
+            // 'persyaratan'   => 'required',
             'slug'          => 'required|unique:antrians,slug,' . $antrian->id,
             'batas_antrian' => 'required|numeric'
         ];
@@ -115,18 +115,18 @@ class DashboardAntrianController extends Controller
         return redirect('/dashboard/antrian');
     }
 
-    // Method untuk membuat Slug otomatis yang diambil dari field nama_layanan
+    // Method untuk membuat Slug otomatis yang diambil dari field nama_antrian
     public function checkSlug(Request $request)
     {
-        $slug = SlugService::createSlug(Antrian::class, 'slug', $request->nama_layanan);
+        $slug = SlugService::createSlug(Antrian::class, 'slug', $request->nama_antrian);
         return response()->json(['slug' => $slug]);
     }
 
-    // Method untuk mengambil data dari Model Layanan dimana file yang diambil adalah nama_layanan
+    // Method untuk mengambil data dari Model Layanan dimana file yang diambil adalah nama_antrian
     public function getAutoCompleteData(Request $request)
     {
         if ($request->has('term')) {
-            return Layanan::where('nama_layanan', 'like', '%' . $request->input('term') . '%')->get();
+            return Layanan::where('nama_antrian', 'like', '%' . $request->input('term') . '%')->get();
         }
     }
 }
