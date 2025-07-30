@@ -23,10 +23,11 @@
     <!-- Custom styles for this template-->
     <link href="/dashboardAssets/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    <script src="/dashboardAssets/vendor/jquery/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <link href="/dashboardAssets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
@@ -257,9 +258,12 @@
     <script src="/dashboardAssets/js/demo/chart-area-demo.js"></script>
     <script src="/dashboardAssets/js/demo/chart-pie-demo.js"></script>
 
-    <script type="text/javascript" src="//cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+    <script type="text/javascript" src="/dashboardAssets/vendor/jquery/jquery.dataTables.min.js"></script>
+    <script src="/dashboardAssets/vendor/jquery/jquery-ui.min.js"
         integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <!-- Page level plugins -->
+    <script src="/dashboardAssets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/dashboardAssets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     @include('sweetalert::alert')
@@ -306,7 +310,7 @@
         });
     </script>
 
-    <script src="https://code.responsivevoice.org/responsivevoice.js?key=qdMHZ86k"></script>
+    <script src="/dashboardAssets/vendor/jquery/responsivevoice.js?key=qdMHZ86k"></script>
 
     <script>
         var navItems = document.querySelectorAll('.nav-item');
@@ -342,6 +346,7 @@
                 preloader.remove()
             });
         }
+        $('#dataTable').DataTable();
     </script>
 
 </body>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Models\Layanan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Antrian;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardLayananController extends Controller
@@ -14,10 +15,11 @@ class DashboardLayananController extends Controller
      */
     public function index()
     {
+        // return Antrian::with('layanan')->get();
         return view('dashboard.layanan.index', [
-            'layanans' => Layanan::all(),
+            'antrians' => Antrian::with('layanan')->get(),
 
-        ]); 
+        ]);
     }
 
     /**
@@ -45,7 +47,6 @@ class DashboardLayananController extends Controller
 
         Alert::success('Sukses', 'Berhasil Menambahkan Layanan baru');
         return redirect('/dashboard/layanan');
-
     }
 
     /**
@@ -83,7 +84,7 @@ class DashboardLayananController extends Controller
 
         Layanan::where('id', $layanan->id)
             ->update($validated);
-        
+
         Alert::success('Berhasil !', 'Berhasil Mengedit Layanan');
         return redirect('/dashboard/layanan');
     }
