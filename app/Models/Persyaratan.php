@@ -9,7 +9,7 @@ class Persyaratan extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $fillable = ['persyaratan'];
+    protected $fillable = ['antrian_id', 'layanan_id', 'persyaratan'];
 
     public function layanan()
     {

@@ -36,14 +36,25 @@ class DashboardLayananController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'antrian_id' => 'required',
             'nama_layanan' => 'required',
-            'kode'         => 'required',
-            'deskripsi'    => 'required'
+            'persyaratans.*'    => 'required'
         ]);
 
         $validated['user_id'] = auth()->user()->id;
 
-        Layanan::create($validated);
+        $layanan = Layanan::create($validated);
+
+        if (!$layanan->id) {
+            Alert::success('Sukses', 'Berhasil Menambahkan Layanan baru');
+            return redirect('/dashboard/layanan');
+        }
+
+        $persyaratan = Layanan::createPersyaratans($validated['persyaratans'], $validated['antrian_id'], $layanan->id);
+        if (!$persyaratan) {
+            Alert::success('Sukses', 'Berhasil Menambahkan Layanan baru');
+            return redirect('/dashboard/layanan');
+        }
 
         Alert::success('Sukses', 'Berhasil Menambahkan Layanan baru');
         return redirect('/dashboard/layanan');
@@ -74,8 +85,6 @@ class DashboardLayananController extends Controller
     {
         $rules = [
             'nama_layanan'  => 'required',
-            'kode'          => 'required',
-            'deskripsi'     => 'required'
         ];
 
         $validated = $request->validate($rules);

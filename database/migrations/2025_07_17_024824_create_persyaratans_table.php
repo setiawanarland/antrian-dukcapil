@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('persyaratans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('antrian_id');
-            $table->foreignId('layanan_id');
+            $table->foreignId('layanan_id')
+                ->references('id')
+                ->on('layanans')
+                ->onDelete('cascade');
             $table->string('persyaratan');
             $table->timestamps();
         });

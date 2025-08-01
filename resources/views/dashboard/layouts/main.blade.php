@@ -28,6 +28,7 @@
 
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
     <link href="/dashboardAssets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/assets/css/bootstrap-select.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
@@ -265,6 +266,7 @@
     <script src="/dashboardAssets/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="/dashboardAssets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="/assets/js/bootstrap-select.min.js"></script>
 
     @include('sweetalert::alert')
 

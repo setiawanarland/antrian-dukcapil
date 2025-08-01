@@ -9,7 +9,7 @@ class Layanan extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-    protected $fillable = ['nama_layanan', 'user_id'];
+    protected $fillable = ['antrian_id', 'nama_layanan', 'user_id'];
 
     public function user()
     {
@@ -24,5 +24,21 @@ class Layanan extends Model
     public function persyaratan()
     {
         return $this->hasMany(Persyaratan::class, 'layanan_id', 'id');
+    }
+
+    public static function createPersyaratans($val, $antrian_id, $layanan_id)
+    {
+        foreach ($val as $key => $value) {
+            $persyaratan = new Persyaratan();
+            $persyaratan->antrian_id = $antrian_id;
+            $persyaratan->layanan_id = $layanan_id;
+            $persyaratan->persyaratan = $value;
+            $persyaratan->save();
+
+            if (!$persyaratan->id) {
+                return false;
+            }
+        };
+        return true;
     }
 }
