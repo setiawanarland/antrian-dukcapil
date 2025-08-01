@@ -9,6 +9,7 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+    <link rel="icon" href="dashboardAssets/img/Logo_Jeneponto.png">
     <!-- Favicons -->
     <link href="/assets/logo/logo.png" rel="icon">
     <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">

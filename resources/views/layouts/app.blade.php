@@ -11,6 +11,7 @@
 
     <title>Autentikasi</title>
 
+    <link rel="icon" href="dashboardAssets/img/Logo_Jeneponto.png">
     <!-- Custom fonts for this template-->
     <link href="/dashboardAssets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/css/googleFont.css" rel="stylesheet">
