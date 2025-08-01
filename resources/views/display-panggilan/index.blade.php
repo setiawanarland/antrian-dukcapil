@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Display Panggilan</title>
+
+    <link rel="icon" href="dashboardAssets/img/Logo_Jeneponto.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css"
@@ -58,25 +60,32 @@
                     </div>
                 </div>
             </div> --}}
+            <div class="row mt-2" style="height: 300;">
 
-            <div class="mt-2 col-md-6" style="height: 400;">
-                @foreach ($antrianList->take(3) as $antrian)
-                    <div class="card mb-3">
-                        <div class="card-header bg-warning">
-                            <div class="card-title">
-                                <h2>{{ $antrian->nama_antrian }}</h2>
+
+                {{-- <div class="mt-2 col-md-6" style="height: 400;"> --}}
+                {{-- @foreach ($antrianList->take(3) as $antrian) --}}
+                @foreach ($antrianList as $antrian)
+                    <div class="col-md mb-4">
+                        <div class="card mb-3">
+                            <div class="card-header bg-warning">
+                                <div class="card-title">
+                                    <h3>{{ $antrian->nama_antrian }}</h2>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-body bg-body-tertiary">
-                            <div class="layanan" data-antrian-id="{{ $antrian->id }}">
-                                <h1 class="display-1"></h1>
-                                <span></span>
+                            <div class="card-body bg-body-tertiary">
+                                <div class="layanan" data-antrian-id="{{ $antrian->id }}">
+                                    <h1 class="display">
+                                        </h2>
+                                        <span></span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
+                {{-- </div> --}}
             </div>
-            <div class="mt-2 col-md-6" style="height: 400;">
+            {{-- <div class="mt-2 col-md-6" style="height: 400;">
                 @foreach ($antrianList->slice(3) as $antrian)
                     <div class="card mb-3">
                         <div class="card-header bg-warning">
@@ -92,7 +101,7 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
+            </div> --}}
         </div>
 
         {{-- <div class="row">

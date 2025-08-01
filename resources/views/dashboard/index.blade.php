@@ -38,9 +38,9 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row d-flex justify-content-center">
                         @foreach ($antrianList as $key => $antrian)
-                            <div class="col-lg-3 mb-4">
+                            <div class="col-lg-2 col-md-6 mb-4">
                                 <div class="card bg-primary text-white shadow">
                                     <div class="card-body">
                                         <a href="/dashboard/antrian-masuk/{{ $antrian->slug }}"
