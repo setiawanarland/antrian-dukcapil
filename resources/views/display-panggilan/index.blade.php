@@ -34,9 +34,9 @@
         <div class="row my-1">
             <div class="d-flex justify-content-between">
                 <div class="card-title">
-                    <h2>DISDUKCAPIL KAB. JENEPONTO</h2>
+                    <h2 class="mt-4">DISDUKCAPIL KAB. JENEPONTO</h2>
                 </div>
-                <div class="jam">
+                <div class="jam mt-4">
                     <h3 id="clock">23:57:00</h3>
                     <p class="mb-0" id="day">Minggu, 16 April 2023</p>
                 </div>
@@ -52,15 +52,45 @@
             {{-- <div class="mt-2 col-md-6" style="height: 300;">
                 <div class="media">
                     <div class="media-body">
-                        <iframe width="775" height="418"
-                            src="https://www.youtube-nocookie.com/embed/yNKvkPJl-tg?controls=0"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen></iframe>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe width="775" height="418"
+                                src="https://www.youtube-nocookie.com/embed/yNKvkPJl-tg?controls=0"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
             </div> --}}
-            <div class="row mt-2" style="height: 300;">
+            {{-- <div class="mt-2 col-md-6" style="height: 300;"> --}}
+            <div class="row mt-2 display-media">
+                <div class="col-md-8 mt-1">
+                    <iframe id="ytplayer" type="text/html" width="100%" height="100%"
+                        src="https://www.youtube-nocookie.com/embed/yNKvkPJl-tg?controls=0" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="col-md-4 mt-1">
+                    <div class="col-md mb-4">
+                        <div class="card mb-3">
+                            <div class="card-header bg-success">
+                                <div class="card-title">
+                                    <h3>OK</h2>
+                                </div>
+                            </div>
+                            <div class="card-body bg-body-tertiary">
+                                <div class="display-antrian" data-antrian-id="">
+                                    <h1 class="">OK
+                                    </h1>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- </div> --}}
+            <div class="row mt-3" style="height: 300;">
 
 
                 {{-- <div class="mt-2 col-md-6" style="height: 400;"> --}}
@@ -76,8 +106,8 @@
                             <div class="card-body bg-body-tertiary">
                                 <div class="layanan" data-antrian-id="{{ $antrian->id }}">
                                     <h1 class="display">
-                                        </h2>
-                                        <span></span>
+                                    </h1>
+                                    <span></span>
                                 </div>
                             </div>
                         </div>

@@ -31,6 +31,14 @@ main header p {
     font-size: 15px;
 }
 
+.display-media {
+    height: 560px;
+}
+
+.display-antrian {
+    height: 400px;
+}
+
 .ads .card {
     border: none;
     box-shadow: #a3b2e1 0px 1px 5px 0px;
