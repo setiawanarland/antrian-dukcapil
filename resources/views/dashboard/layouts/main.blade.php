@@ -11,7 +11,7 @@
 
     <title>Disdukcapil - Layanan Antrian Online</title>
 
-    <link rel="icon" href="dashboardAssets/img/Logo_Jeneponto.png">
+    <link rel="icon" href="/dashboardAssets/img/Logo_Jeneponto.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
@@ -199,7 +199,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Antrian Disdukcapil 2025</span>
                     </div>
                 </div>
             </footer>

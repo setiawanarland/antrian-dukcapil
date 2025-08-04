@@ -9,6 +9,7 @@ use App\Http\Controllers\DaftarAntrianController;
 use App\Http\Controllers\Dashboard\DashboardAntrianController;
 use App\Http\Controllers\Dashboard\DashboardAntrianMasukController;
 use App\Http\Controllers\Dashboard\DashboardLayananController;
+use App\Http\Controllers\Dashboard\DashboardPersyaratanController;
 use App\Http\Controllers\DisplayPanggilanController;
 use App\Http\Controllers\LandingController;
 
@@ -64,6 +65,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/api/dashboard/antrian', [DashboardAntrianController::class, 'getAutoCompleteData']);
     Route::resource('/dashboard/antrian', DashboardAntrianController::class);
     Route::resource('/dashboard/layanan', DashboardLayananController::class);
+    Route::resource('/dashboard/persyaratan', DashboardPersyaratanController::class);
     // Route::get('/dashboard/antrian-masuk/{antrian:slug}', [DashboardAntrianMasukController::class, 'index']);
     Route::get('/dashboard/antrian-masuk', [DashboardAntrianMasukController::class, 'index']);
     Route::DELETE('/dashboard/antrian-masuk/{antrian:id}', [DashboardAntrianMasukController::class, 'destroy'])->name('antrian.destroy');

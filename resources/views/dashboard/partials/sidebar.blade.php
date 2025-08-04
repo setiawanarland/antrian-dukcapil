@@ -51,6 +51,11 @@
                     <i class="bi bi-headset"></i>
                     <span>Layanan</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard/persyaratan">
+                    <i class="bi bi-file-text"></i>
+                    <span>Persyaratan</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">

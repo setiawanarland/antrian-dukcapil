@@ -31,50 +31,52 @@
                             <tbody>
                                 <!-- Menampilkan semua data layanan -->
                                 @foreach ($antrians as $antrian)
-                                    <tr>
-                                        <td rowspan="{{ count($antrian->layanan) }}">{{ $loop->iteration }}</td>
-                                        <td rowspan="{{ count($antrian->layanan) }}">{{ $antrian->nama_antrian }}
-                                        </td>
+                                    @if (count($antrian->layanan))
+                                        <tr>
+                                            <td rowspan="{{ count($antrian->layanan) }}">{{ $loop->iteration }}</td>
+                                            <td rowspan="{{ count($antrian->layanan) }}">{{ $antrian->nama_antrian }}
+                                            </td>
 
-                                        @if (count($antrian->layanan))
-                                            @for ($i = 0; $i < count($antrian->layanan); $i++)
-                                                <td>{{ $antrian->layanan[$i]->nama_layanan }}</td>
-                                                <td>
-                                                    <ol class="list-group list-group-numbered">
+                                            @if (count($antrian->layanan))
+                                                @for ($i = 0; $i < count($antrian->layanan); $i++)
+                                                    <td>{{ $antrian->layanan[$i]->nama_layanan }}</td>
+                                                    <td>
+
                                                         @foreach ($antrian->layanan[$i]->persyaratan as $peryaratan)
                                                             <li class="">{{ $peryaratan->persyaratan }}</li>
                                                         @endforeach
-                                                    </ol>
-                                                </td>
-                                                <td>
-                                                    <!-- Button untuk mengedit layanan -->
-                                                    <a href="/dashboard/layanan/{{ $antrian->layanan[$i]->id }}/edit"
-                                                        class="btn btn-warning btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="bi bi-pencil-square"></i>
-                                                        </span>
-                                                        <span class="text">Edit</span>
-                                                    </a>
 
-                                                    <!-- Button untuk menghapus Layanan -->
-                                                    <form id="{{ $antrian->layanan[$i]->id }}"
-                                                        action="/dashboard/layanan/{{ $antrian->layanan[$i]->id }}"
-                                                        method="POST" class="d-inline">
-                                                        @method('delete')
-                                                        @csrf
-                                                        <div class="btn-danger btn-icon-split mb-2 swal-confirm"
-                                                            data-form="{{ $antrian->layanan[$i]->id }}">
+                                                    </td>
+                                                    <td>
+                                                        <!-- Button untuk mengedit layanan -->
+                                                        <a href="/dashboard/layanan/{{ $antrian->layanan[$i]->id }}/edit"
+                                                            class="btn btn-warning btn-icon-split">
                                                             <span class="icon text-white-50">
-                                                                <i class="fas fa-trash"></i>
+                                                                <i class="bi bi-pencil-square"></i>
                                                             </span>
-                                                            <span class="text">Hapus</span>
-                                                        </div>
-                                                    </form>
-                                                </td>
-                                    </tr>
-                                @endfor
+                                                            <span class="text">Edit</span>
+                                                        </a>
+
+                                                        <!-- Button untuk menghapus Layanan -->
+                                                        <form id="{{ $antrian->layanan[$i]->id }}"
+                                                            action="/dashboard/layanan/{{ $antrian->layanan[$i]->id }}"
+                                                            method="POST" class="d-inline">
+                                                            @method('delete')
+                                                            @csrf
+                                                            <div class="btn-danger btn-icon-split mb-2 swal-confirm"
+                                                                data-form="{{ $antrian->layanan[$i]->id }}">
+                                                                <span class="icon text-white-50">
+                                                                    <i class="fas fa-trash"></i>
+                                                                </span>
+                                                                <span class="text">Hapus</span>
+                                                            </div>
+                                                        </form>
+                                                    </td>
+                                        </tr>
+                                    @endfor
                                 @endif
                                 </tr>
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>
