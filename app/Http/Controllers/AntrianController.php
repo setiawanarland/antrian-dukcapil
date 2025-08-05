@@ -10,6 +10,7 @@ use Barryvdh\DomPDF\Facade\PDF;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Carbon\Carbon;
+use Dompdf\Dompdf;
 use Illuminate\Support\Carbon as SupportCarbon;
 use Illuminate\Support\Facades\Storage;
 
@@ -176,16 +177,18 @@ class AntrianController extends Controller
     public function cetakKodeAntrian(Ambilantrian $id)
     {
         $cetakKodeAntrian = Ambilantrian::find($id->id);
-        // $logoPath = 'app\public\logo\logo.png';
 
-        // return storage_path();
-        // $logo = base64_encode(file_get_contents($logoPath));
+        $logoPath = public_path('dashboardAssets\img\Logo_Jeneponto.png');
+
+        $logo = base64_encode(file_get_contents($logoPath));
+        // return $logo;
 
         $pdf = PDF::loadView('antrian.kode-antrian', [
             'cetakKodeAntrian' => $cetakKodeAntrian,
-            // 'logo'             => $logo
+            'logo'             => $logo
         ]);
-
+        // $dompdf = new Dompdf();
+        // return $dompdf->loadHtml('hello world');
         return $pdf->stream('kode-antrian.pdf');
     }
 }
