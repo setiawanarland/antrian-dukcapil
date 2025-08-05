@@ -71,9 +71,10 @@ class AntrianController extends Controller
 
         $antrian        = Antrian::findOrFail($validated['antrian_id']);
         $service_code   = $antrian->kode;
+        $date = Carbon::now();
 
         // ambil record terakhir dari tabel Ambilantrian berdasarkan tanggal dan kode
-        $last_record = Ambilantrian::where('tanggal', Carbon::now())
+        $last_record = Ambilantrian::where('tanggal', $date->toDateString())
             ->where('kode', 'like', $service_code . '%')
             ->orderBy('created_at', 'desc')
             ->first();
@@ -93,7 +94,7 @@ class AntrianController extends Controller
 
         // validasi untuk memastikan tidak terjadi duplikasi pada kode antrian pada tanggal yang sama
         $kode_antrian = $service_code . '-' . $next_kode;
-        $existing_record = Ambilantrian::where('kode', $kode_antrian)->where('tanggal', Carbon::now())->first();
+        $existing_record = Ambilantrian::where('kode', $kode_antrian)->where('tanggal', $date->toDateString())->first();
         if ($existing_record) {
             return redirect('/antrian')->with('error', 'Maaf, Anda sudah mengambil antrian ini. Silahkan ambil di hari lain');
         }
@@ -101,7 +102,7 @@ class AntrianController extends Controller
 
         // Mengecek apakah jumlah antrian pada tabel ambilantrian
         $antrian_count = Ambilantrian::where('antrian_id', $validated['antrian_id'])
-            ->where('tanggal', Carbon::now())
+            ->where('tanggal', $date->toDateString())
             ->count();
 
         // Mengecek apakah jumlah antrian pada tabel antrian
