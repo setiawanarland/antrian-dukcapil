@@ -1204,3 +1204,9 @@ section .container {
 .oauthButton:hover::before {
   width: 100%;
 }
+
+@media (max-width: 992px) {
+  .oauthButton {
+    width: 100%;
+  }
+}
