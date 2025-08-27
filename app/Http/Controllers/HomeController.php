@@ -29,4 +29,11 @@ class HomeController extends Controller
             'antrianList' => Antrian::all(),
         ]);
     }
+
+    public function indexOp()
+    {
+        return view('/dashboard/op', [
+            'antrianList' => Antrian::all(),
+        ]);
+    }
 }

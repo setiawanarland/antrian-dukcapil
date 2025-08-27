@@ -188,8 +188,9 @@ class AntrianController extends Controller
             'cetakKodeAntrian' => $cetakKodeAntrian,
             'logo'             => $logo
         ]);
-        // $dompdf = new Dompdf();
-        // return $dompdf->loadHtml('hello world');
+
+        // $customPaper = array(0, 0, 30, 400);
+        $pdf->setPaper('catalog #10 1/2 envelope', 'portrait');
         return $pdf->stream('kode-antrian.pdf');
     }
 }

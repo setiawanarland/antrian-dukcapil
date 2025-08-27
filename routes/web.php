@@ -73,6 +73,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::DELETE('/dashboard/antrian-masuk/{slug}/reset', [DashboardAntrianMasukController::class, 'reset']);
 });
 
+// Route untuk operator, hanya Operator yang bisa mengakses halaman-halaman ini
+Route::middleware(['auth', 'role:operator'])->group(function () {
+    Route::get('/dashboard-op', [HomeController::class, 'indexOp'])->name('dashboard.op');
+});
+
 // Route untuk user, hanya User/Pengambil Antrian yang bisa mengakses halaman-halaman ini
 Route::middleware(['auth', 'role:masyarakat'])->group(function () {
     Route::get('/antrian/create/{id}', [AntrianController::class, 'create']);
